@@ -1,0 +1,41 @@
+{
+  "intents": [
+    {
+      "intent": "SetBetAmountIntent",
+      "slots": [
+        {
+          "name": "FieldName",
+          "type": "LIST_OF_FIELD_NAMES"
+        },
+        {
+          "name": "BetAmount",
+          "type": "AMAZON.NUMBER"
+        }
+      ]
+    },
+    {
+      "intent": "ResetGameIntent"
+    },
+    {
+      "intent": "NewGameIntent"
+    },
+    {
+      "intent": "TellCreditBalanceIntent"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
+    },
+    {
+      "intent": "AMAZON.PauseIntent"
+    },
+    {
+      "intent": "AMAZON.ResumeIntent"
+    }
+  ]
+}

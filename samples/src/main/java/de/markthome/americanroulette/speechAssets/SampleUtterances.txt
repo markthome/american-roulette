@@ -1,0 +1,30 @@
+NewGameIntent Neu
+NewGameIntent Neues Spiel
+NewGameIntent Starte ein neues Spiel
+
+ResetGameIntent Reset
+ResetGameIntent Zurücksetzen
+ResetGameIntent Neues Spiel
+ResetGameIntent Neues Glück neues Spiel
+ResetGameIntent Neu
+ResetGameIntent Nochmal
+
+SetBetAmountIntent Ich möchte auf {FieldName} setzen
+SetBetAmountIntent Ich möchte {BetAmount} auf {FieldName} setzen 
+SetBetAmountIntent Ich möchte {BetAmount} setzen
+SetBetAmountIntent Ich setze auf {FieldName}
+SetBetAmountIntent Ich setze {BetAmount} auf {FieldName}
+SetBetAmountIntent Setze {BetAmount}
+SetBetAmountIntent Setze {BetAmount} auf {FieldName}
+
+TellCreditBalanceIntent Was ist mein Kontostand
+TellCreditBalanceIntent Was ist mein aktueller Kontostand
+TellCreditBalanceIntent Wieviel habe ich noch
+TellCreditBalanceIntent Wie ist mein aktueller Stand
+TellCreditBalanceIntent Wie ist mein Kontostand
+TellCreditBalanceIntent Kontostand
+TellCreditBalanceIntent Wieviel kann ich noch setzen
+TellCreditBalanceIntent Welchen Betrag kann ich setzen
+TellCreditBalanceIntent Welchen Betrag kann ich noch setzen
+TellCreditBalanceIntent Welcher Einsatz ist möglich
+TellCreditBalanceIntent Welcher Einsatz ist noch möglich
