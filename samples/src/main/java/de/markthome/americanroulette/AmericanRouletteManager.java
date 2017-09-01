@@ -98,8 +98,8 @@ public class AmericanRouletteManager {
      */
     public SpeechletResponse getNewGameIntentResponse(Session session) {
         
-    	String speechText = "AmericanRoulette, Ein neues Spiel ist gestartet. Dein Kontostand beträgt 500 . Mache dein Einsatz...";
-    	String repromptText = "Ein neues Spiel ist gestartet. Dein Kontostand beträgt 500 . Mache dein Einsatz...";
+    	String speechText = "AmericanRoulette, Ein neues Spiel ist gestartet. Dein Kontostand beträgt 500, mache dein Einsatz...";
+    	String repromptText = "Ein neues Spiel ist gestartet. Dein Kontostand beträgt 500, mache dein Einsatz...";
         
     	AmericanRouletteGame game = americanRouletteDao.getAmericanRouletteGame(session);
 
@@ -174,13 +174,16 @@ public class AmericanRouletteManager {
         americanRouletteDao.saveAmericanRouletteGame(game);
         
         // Create answer
+        String audio = "<audio src='https://s3-eu-west-1.amazonaws.com/markthome-american-roulette/american-roulette.mp3'/>";
+        
         StringBuffer speechText = new StringBuffer();
+        
         speechText.append("<speak>Ok, ich setze ");
         speechText.append(betAmount);
         speechText.append(" auf ");
         speechText.append(fieldName);
         speechText.append(". Nichts geht mehr...");
-        speechText.append("<audio src='https://s3-eu-west-1.amazonaws.com/markthome-american-roulette/american-roulette.mp3'/>");
+        speechText.append(audio);
         speechText.append(" Das Ergebnis ist: ");
         speechText.append(spinWheelResult.getResultFieldNumber());
         
@@ -228,7 +231,9 @@ public class AmericanRouletteManager {
         
         speechText.append("</speak>");
         
-        return getTellSpeechletResponse(speechText.toString(), true);
+        String cardText = speechText.toString().replace("<speak>","").replace("</speak>", "").replace(audio, "");
+        
+        return getTellSpeechletResponse(speechText.toString(), cardText, true);
     }
 
     /**
@@ -311,7 +316,7 @@ public class AmericanRouletteManager {
     private SpeechletResponse getAskSpeechletResponse(String speechText, String repromptText) {
         // Create the Simple card content.
         SimpleCard card = new SimpleCard();
-        card.setTitle("Session");
+        card.setTitle("American Roulette");
         card.setContent(speechText);
 
         // Create the plain text output.
@@ -333,7 +338,7 @@ public class AmericanRouletteManager {
      * @return
      */
     private SpeechletResponse getTellSpeechletResponse(String speechText) {
-    	return getTellSpeechletResponse(speechText, false);
+    	return getTellSpeechletResponse(speechText, speechText, false);
     }
 
     /**
@@ -343,11 +348,11 @@ public class AmericanRouletteManager {
      *            Text for speech output
      * @return a tell Speechlet response for a speech and reprompt text
      */
-    private SpeechletResponse getTellSpeechletResponse(String speechText, boolean isSsml) {
+    private SpeechletResponse getTellSpeechletResponse(String speechText, String cardText, boolean isSsml) {
         // Create the Simple card content.
         SimpleCard card = new SimpleCard();
-        card.setTitle("Session");
-        card.setContent(speechText);
+        card.setTitle("American Roulette");
+        card.setContent(cardText);
 
         // Create the plain text output.
         if(isSsml) {
